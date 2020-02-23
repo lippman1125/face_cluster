@@ -15,6 +15,7 @@
 #include <string.h>
 #include <strings.h>
 #include <iomanip>
+#include <sys/time.h>
 #include "feature.hpp"
 #include "cluster.hpp"
 
@@ -158,8 +159,14 @@ int main(int argc, char * * argv) {
                 }
             }
             cout<<"real cluster num: "<<labels.first<<endl;
+            struct timeval tv_start;
+            struct timeval tv_end;
+            gettimeofday(&tv_start, NULL);
             preds = face_cluster.Cluster(face_descriptors, labels);
+            gettimeofday(&tv_end, NULL);
+            long long diff_ms = (tv_end.tv_sec - tv_start.tv_sec)*1000 + (tv_end.tv_usec - tv_start.tv_usec)/1000;
             cout<<"pred cluster num: "<<preds.first<<endl;
+            cout<<"time cost :"<<diff_ms<<"[ms]"<<endl;
             metric_results = face_cluster.Metric();
             cout<<"RI: "<<metric_results[0]<<endl;
             cout<<"Precision: "<<metric_results[1]<<endl;
