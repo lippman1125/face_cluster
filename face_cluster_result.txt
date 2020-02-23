@@ -1,0 +1,4 @@
+Average:
+RI average: 0.959592
+Precision average: 0.96861
+Recall average: 0.880657
