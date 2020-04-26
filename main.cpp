@@ -114,7 +114,7 @@ int main(int argc, char * * argv) {
     class FaceCluster face_cluster(0.35);
     vector<string> imgs_path;
     vector<float> descriptor;
-    bool metric_flag = true;
+    bool metric_flag = false;
     int lines= 0;
 
     #ifdef TEST
